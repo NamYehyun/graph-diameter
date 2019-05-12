@@ -33,19 +33,21 @@ public:
 
 class Graph {
 public:
-    unsigned long long num_nodes;
-    unsigned long long num_edges;
+    unsigned long long next_edge_id;
 
-    unordered_map<unsigned long long, Node*> nodes;
-    unordered_map<unsigned long long, Edge*> edges;
+    unordered_set<Node*> nodes;
+    unordered_map<unsigned long long, Node*> id_to_node;
+
+    unordered_set<Edge*> edges;
+    unordered_map<unsigned long long, Edge*> id_to_edge;
 
     Graph(void);
     ~Graph(void);
 
-    int addNode(Node*);
+    Node* getNode(unsigned long long);
+    Node* addNode(unsigned long long);
 
-    int addEdge(Edge*);
-    int addEdge(Node*, Node*);
+    Edge* addEdge(unsigned long long, unsigned long long);
 };
 
 #endif
